@@ -1,0 +1,160 @@
+---
+// Features Section — 6 tính năng nổi bật
+const features = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+    color: 'brand',
+    title: 'Kết nối trực tiếp Tổng cục Thuế',
+    desc: 'Kết nối thẳng tới API hoadondientu.gdt.gov.vn bằng tài khoản MST hợp pháp của doanh nghiệp — không qua bên thứ ba, không trung gian.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>`,
+    color: 'info',
+    title: 'Trích xuất 30+ trường dữ liệu',
+    desc: 'Đầy đủ dữ liệu cấp hóa đơn và cấp dòng hàng: MCCQT, thuế suất từng dòng, thông tin người bán/mua, chiết khấu, chữ ký số…',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>`,
+    color: 'success',
+    title: 'Đồng bộ tự động nền',
+    desc: 'Cron job tự động kéo hóa đơn mới về mỗi ngày. Không cần thủ công, không bỏ sót, lưu lịch sử theo phiên bản.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    color: 'warning',
+    title: 'Đối chiếu & Phát hiện sai lệch',
+    desc: 'Tự động phát hiện lệch thuế, hóa đơn đầu ra bị thiếu số, hóa đơn hủy/thay thế. Cảnh báo ngay khi có bất thường.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+    color: 'success',
+    title: 'Xuất đa định dạng',
+    desc: 'Kết xuất Excel/CSV với mẫu cột chuẩn, tương thích MISA, FAST, SmartKTSC. Số tiền giữ độ chính xác numeric.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    color: 'brand',
+    title: 'Bảo mật chuẩn Enterprise',
+    desc: 'Không lưu mật khẩu. Token mã hóa AES-256-GCM. Audit log bất biến. Cách ly dữ liệu từng doanh nghiệp (multi-tenant).',
+  },
+];
+---
+
+<section class="section features-section" id="features" aria-label="Tính năng VATEngine">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Tính năng</p>
+      <h2 class="section-title">Mọi thứ kế toán cần<br/>từ hóa đơn điện tử</h2>
+      <p class="section-desc">
+        VATEngine không chỉ tải hóa đơn — đây là nền tảng dữ liệu hoá đơn hoàn chỉnh
+        giúp doanh nghiệp làm chủ dữ liệu thuế của mình.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      {features.map((feature, i) => (
+        <article
+          class={`feature-card feature-card--${feature.color} reveal`}
+          style={`transition-delay: ${i * 0.08}s`}
+        >
+          <div class={`feature-icon feature-icon--${feature.color}`} aria-hidden="true">
+            <Fragment set:html={feature.icon} />
+          </div>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-desc">{feature.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    background: var(--surface-page);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--sp-16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-header .section-desc { text-align: center; }
+
+  /* Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+  @media (min-width: 600px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Card */
+  .feature-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--sp-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .feature-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--border-strong, #bdc1c6);
+  }
+
+  /* Icon */
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .feature-icon svg { width: 24px; height: 24px; }
+
+  .feature-icon--brand {
+    background: var(--brand-50);
+    color: var(--brand-600);
+    border: 1px solid rgba(197,34,31,.12);
+  }
+  .feature-icon--info {
+    background: var(--info-50);
+    color: var(--info-600);
+    border: 1px solid rgba(26,115,232,.12);
+  }
+  .feature-icon--success {
+    background: var(--success-50);
+    color: var(--success-600);
+    border: 1px solid rgba(24,128,56,.12);
+  }
+  .feature-icon--warning {
+    background: var(--warning-50);
+    color: var(--warning-700);
+    border: 1px solid rgba(176,96,0,.12);
+  }
+
+  .feature-title {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+  .feature-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+</style>

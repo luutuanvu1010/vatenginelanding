@@ -1,0 +1,157 @@
+---
+// CTA Section — Call to action cuối trang
+---
+
+<section class="cta-section" id="cta" aria-label="Bắt đầu dùng VATEngine">
+  <div class="container">
+    <div class="cta-card reveal">
+      <!-- Background decoration -->
+      <div class="cta-bg" aria-hidden="true">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+      </div>
+
+      <div class="cta-content">
+        <div class="cta-badge">
+          <span class="badge badge-free">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Miễn phí mãi mãi
+          </span>
+        </div>
+
+        <h2 class="cta-title">
+          Sẵn sàng làm chủ<br/>
+          dữ liệu hóa đơn của bạn?
+        </h2>
+
+        <p class="cta-desc">
+          Bắt đầu ngay hôm nay — không cần cài đặt, không phí, không giới hạn.
+          Chỉ cần tài khoản Mã số thuế hợp lệ từ Tổng cục Thuế.
+        </p>
+
+        <div class="cta-actions">
+          <a
+            href="https://vatengine.tourdao.vn"
+            class="btn btn-cta"
+            target="_blank"
+            rel="noopener"
+            id="cta-main-btn"
+          >
+            Bắt đầu miễn phí ngay
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <p class="cta-note">
+          Không cần thẻ tín dụng &nbsp;·&nbsp; Không đăng ký phức tạp &nbsp;·&nbsp; Bởi Tour Đảo
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding-block: var(--sp-24);
+    background: var(--surface-page);
+  }
+
+  .cta-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a0a09 0%, var(--brand-800) 50%, #2a1010 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--sp-16) var(--sp-12);
+    text-align: center;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .cta-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .cta-blob-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(197,34,31,.4);
+    top: -150px;
+    right: -100px;
+  }
+  .cta-blob-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(26,115,232,.2);
+    bottom: -100px;
+    left: -50px;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-6);
+  }
+
+  .cta-badge {
+    display: flex;
+    justify-content: center;
+  }
+  .cta-badge .badge-free {
+    background: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.9);
+    border: 1px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(8px);
+  }
+
+  .cta-title {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: var(--fw-extrabold);
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-desc {
+    font-size: var(--fs-lg);
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .cta-actions { margin-top: var(--sp-2); }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: 16px 36px;
+    background: #fff;
+    color: var(--brand-700);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    transition: all 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,.25);
+  }
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.3);
+    background: var(--surface-page);
+  }
+
+  .cta-note {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.5);
+  }
+</style>

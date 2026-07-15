@@ -1,0 +1,181 @@
+---
+// Security Section — Cam kết bảo mật
+const securityItems = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>`,
+    title: 'Không lưu mật khẩu',
+    desc: 'Mật khẩu thuế chỉ dùng trong bộ nhớ đúng lúc đăng nhập, không bao giờ được ghi xuống đĩa hay gửi đi đâu khác.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>`,
+    title: 'Token mã hóa AES-256-GCM',
+    desc: 'Token JWT Tổng cục Thuế được mã hóa theo chuẩn AES-256-GCM (envelope encryption). Khoá xoay định kỳ, không lưu thô.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>`,
+    title: 'Audit Log bất biến',
+    desc: 'Mọi hành động nhạy cảm (đồng bộ, xuất, kết nối thuế) được ghi vào audit log chỉ-thêm, ngăn chặn sửa/xóa kể cả quản trị viên.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+    title: 'Cách ly dữ liệu multi-tenant',
+    desc: 'Mỗi doanh nghiệp là một tenant độc lập, cách ly hoàn toàn ở tầng truy vấn (Row-Level Security PostgreSQL). Không thể truy cập dữ liệu của nhau.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
+    title: 'Phạm vi hợp pháp',
+    desc: 'Chỉ truy xuất hóa đơn thuộc thẩm quyền của doanh nghiệp đăng nhập. Không thu thập dữ liệu bên thứ ba. Tuân thủ NĐ 13/2023/NĐ-CP.',
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    title: 'Tuân thủ pháp lý đầy đủ',
+    desc: 'Tuân thủ Nghị định 13/2023/NĐ-CP bảo vệ dữ liệu cá nhân, NĐ 123/2020/NĐ-CP và TT 78/2021/TT-BTC về hóa đơn điện tử.',
+  },
+];
+---
+
+<section class="section security-section" id="security" aria-label="Cam kết bảo mật VATEngine">
+  <div class="container">
+    <div class="security-inner">
+      <!-- Left: heading -->
+      <div class="security-intro reveal">
+        <p class="section-label">Bảo mật & Tuân thủ</p>
+        <h2 class="section-title">
+          Tin cậy như<br/>
+          phần mềm kế toán<br/>
+          chuẩn Enterprise
+        </h2>
+        <p class="section-desc">
+          Hóa đơn thuế là dữ liệu tài chính nhạy cảm. VATEngine được thiết kế
+          với bảo mật làm ưu tiên số một, không phải bổ sung sau.
+        </p>
+        <div class="security-badge reveal">
+          <div class="trust-seal">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--brand-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <div>
+              <div class="trust-seal-title">Bảo mật xác minh</div>
+              <div class="trust-seal-sub">Thiết kế từ nền tảng, không phải bổ sung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: grid -->
+      <div class="security-grid">
+        {securityItems.map((item, i) => (
+          <div class="security-item reveal" style={`transition-delay: ${i * 0.07}s`}>
+            <div class="security-item-icon" aria-hidden="true">
+              <Fragment set:html={item.icon} />
+            </div>
+            <div>
+              <h3 class="security-item-title">{item.title}</h3>
+              <p class="security-item-desc">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .security-section {
+    background: var(--surface-page);
+  }
+
+  .security-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-16);
+    align-items: start;
+  }
+  @media (min-width: 900px) {
+    .security-inner {
+      grid-template-columns: 380px 1fr;
+      gap: var(--sp-20);
+    }
+  }
+
+  .security-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    position: sticky;
+    top: 88px;
+  }
+
+  .trust-seal {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--brand-50);
+    border: 1px solid rgba(197,34,31,.15);
+    border-radius: var(--radius-lg);
+    width: fit-content;
+  }
+  .trust-seal-title {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--brand-700);
+  }
+  .trust-seal-sub {
+    font-size: var(--fs-xs);
+    color: var(--brand-600);
+    opacity: 0.8;
+  }
+
+  /* Security grid */
+  .security-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-1);
+  }
+  @media (min-width: 600px) {
+    .security-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .security-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+    padding: var(--sp-5) var(--sp-6);
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .security-item:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--brand-600);
+  }
+
+  .security-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--success-50);
+    color: var(--success-600);
+    border: 1px solid rgba(24,128,56,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .security-item-icon svg { width: 20px; height: 20px; }
+
+  .security-item-title {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--sp-2);
+  }
+  .security-item-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+</style>

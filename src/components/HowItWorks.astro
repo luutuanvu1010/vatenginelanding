@@ -1,0 +1,173 @@
+---
+// How It Works — 4-step process timeline
+const steps = [
+  {
+    number: '01',
+    title: 'Đăng nhập bằng MST',
+    desc: 'Nhập Mã số thuế, mật khẩu và mã captcha từ Tổng cục Thuế. Mật khẩu chỉ dùng một lần để xác thực — không lưu trên server.',
+    note: 'Bảo mật tuyệt đối',
+    noteColor: 'success',
+  },
+  {
+    number: '02',
+    title: 'Tự động kéo & lưu hóa đơn',
+    desc: 'VATEngine truy vấn đồng thời hóa đơn đầu vào/đầu ra (kể cả hóa đơn máy tính tiền), khử trùng lặp và lưu trữ bền vững với đầy đủ 30+ trường.',
+    note: 'Đồng bộ idempotent',
+    noteColor: 'info',
+  },
+  {
+    number: '03',
+    title: 'Lọc, tìm kiếm & đối chiếu',
+    desc: 'Tra cứu theo kỳ, lọc theo cột, xem chi tiết dòng hàng. Module đối chiếu tự động phát hiện lệch thuế và hóa đơn bất thường.',
+    note: 'Phát hiện sai lệch ngay',
+    noteColor: 'warning',
+  },
+  {
+    number: '04',
+    title: 'Xuất sang phần mềm kế toán',
+    desc: 'Kết xuất Excel/CSV theo mẫu chuẩn, tương thích MISA, FAST, SmartKTSC. Số tiền giữ độ chính xác numeric, ô tiền định dạng #,##0.',
+    note: 'Tương thích đa phần mềm',
+    noteColor: 'brand',
+  },
+];
+---
+
+<section class="section hiw-section" id="how-it-works" aria-label="Cách VATEngine hoạt động">
+  <!-- Alternating light/muted background -->
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Cách hoạt động</p>
+      <h2 class="section-title">4 bước từ MST<br/>đến báo cáo kế toán</h2>
+      <p class="section-desc">
+        Quy trình đơn giản, tự động tối đa — doanh nghiệp chỉ cần đăng nhập một lần,
+        phần còn lại VATEngine lo.
+      </p>
+    </div>
+
+    <div class="steps">
+      {steps.map((step, i) => (
+        <div class={`step reveal ${i % 2 === 1 ? 'step--reverse' : ''}`} style={`transition-delay: ${i * 0.1}s`}>
+          <!-- Number bubble -->
+          <div class="step-number-col" aria-hidden="true">
+            <div class="step-bubble">
+              <span class="step-num">{step.number}</span>
+            </div>
+            {i < steps.length - 1 && <div class="step-connector"></div>}
+          </div>
+
+          <!-- Content -->
+          <div class="step-content">
+            <div class={`step-note step-note--${step.noteColor}`}>{step.note}</div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hiw-section {
+    background: var(--surface-card);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--sp-16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section-header .section-desc { text-align: center; }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 820px;
+    margin-inline: auto;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  /* Number column */
+  .step-number-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-bubble {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--brand-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(197,34,31,.25);
+  }
+  .step-num {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-extrabold);
+    color: #fff;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step-connector {
+    width: 2px;
+    flex: 1;
+    min-height: 40px;
+    background: linear-gradient(to bottom, var(--brand-600) 0%, var(--border) 100%);
+    opacity: 0.3;
+    margin-block: var(--sp-2);
+  }
+
+  /* Content */
+  .step-content {
+    padding-bottom: var(--sp-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding-top: var(--sp-3);
+  }
+
+  .step-note {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .step-note--brand   { background: var(--brand-50);   color: var(--brand-600); }
+  .step-note--info    { background: var(--info-50);    color: var(--info-600); }
+  .step-note--success { background: var(--success-50); color: var(--success-600); }
+  .step-note--warning { background: var(--warning-50); color: var(--warning-700); }
+
+  .step-title {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+  .step-desc {
+    font-size: var(--fs-base);
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+</style>

@@ -1,0 +1,211 @@
+---
+// Header — Navigation + Text Logo
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <!-- Text Logo: VAT (đen) + Engine (đỏ) -->
+    <a href="/" class="logo" aria-label="VATEngine - Trang chủ">
+      <span class="logo-vat">VAT</span><span class="logo-engine">Engine</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#features" class="nav-link">Tính năng</a>
+      <a href="#how-it-works" class="nav-link">Cách dùng</a>
+      <a href="#security" class="nav-link">Bảo mật</a>
+      <a href="#about" class="nav-link">Về chúng tôi</a>
+    </nav>
+
+    <!-- CTA -->
+    <div class="header-actions">
+      <a
+        href="https://vatengine.tourdao.vn"
+        class="btn btn-primary btn-sm"
+        target="_blank"
+        rel="noopener"
+        id="header-cta"
+      >
+        Dùng miễn phí
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Mở menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav">
+      <a href="#features" class="mobile-nav-link">Tính năng</a>
+      <a href="#how-it-works" class="mobile-nav-link">Cách dùng</a>
+      <a href="#security" class="mobile-nav-link">Bảo mật</a>
+      <a href="#about" class="mobile-nav-link">Về chúng tôi</a>
+      <a
+        href="https://vatengine.tourdao.vn"
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+        style="margin-top: var(--sp-4); justify-content: center;"
+      >
+        Dùng miễn phí →
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: box-shadow 0.2s;
+  }
+  .header.scrolled {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-6);
+    height: 64px;
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 22px;
+    font-weight: var(--fw-extrabold);
+    line-height: 1;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .logo-vat    { color: var(--text-primary); }
+  .logo-engine { color: var(--brand-600); }
+
+  /* Nav */
+  .nav {
+    display: none;
+    align-items: center;
+    gap: var(--sp-1);
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .nav { display: flex; }
+  }
+
+  .nav-link {
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-link:hover {
+    color: var(--text-primary);
+    background: var(--surface-hover);
+  }
+
+  /* Header actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .header-actions { margin-left: 0; }
+  }
+
+  .btn-sm { padding: 10px 20px; font-size: var(--fs-sm); }
+
+  /* Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--sp-2);
+    border-radius: var(--radius-sm);
+    transition: background 0.15s;
+  }
+  .hamburger:hover { background: var(--surface-hover); }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  @media (min-width: 768px) { .hamburger { display: none; } }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    padding: var(--sp-4) var(--sp-6) var(--sp-6);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+  .mobile-nav-link {
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-md);
+    font-weight: var(--fw-medium);
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s;
+  }
+  .mobile-nav-link:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+  }
+</style>
+
+<script>
+  // Scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger?.addEventListener('click', () => {
+    const open = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!open));
+    mobileMenu?.setAttribute('aria-hidden', String(open));
+    mobileMenu?.classList.toggle('open', !open);
+  });
+
+  // Close menu when clicking links
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>

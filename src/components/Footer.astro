@@ -1,0 +1,202 @@
+---
+// Footer
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <!-- Top row -->
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="VATEngine - Trang chủ">
+          <span class="logo-vat">VAT</span><span class="logo-engine">Engine</span>
+        </a>
+        <p class="footer-tagline">
+          Trích xuất hóa đơn điện tử<br/>Nhanh · Chuẩn · Miễn phí
+        </p>
+        <p class="footer-company">
+          Bởi <strong>Công ty TNHH Tour Đảo</strong>
+        </p>
+      </div>
+
+      <!-- Links -->
+      <nav class="footer-nav" aria-label="Điều hướng footer">
+        <div class="footer-nav-group">
+          <h3 class="footer-nav-label">Sản phẩm</h3>
+          <ul>
+            <li><a href="#features" class="footer-link">Tính năng</a></li>
+            <li><a href="#how-it-works" class="footer-link">Cách hoạt động</a></li>
+            <li><a href="#security" class="footer-link">Bảo mật</a></li>
+            <li>
+              <a
+                href="https://vatengine.tourdao.vn"
+                class="footer-link footer-link--cta"
+                target="_blank"
+                rel="noopener"
+              >
+                Dùng miễn phí
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h3 class="footer-nav-label">Công ty</h3>
+          <ul>
+            <li><a href="#about" class="footer-link">Về Tour Đảo</a></li>
+            <li>
+              <a
+                href="https://github.com/tourdao"
+                class="footer-link"
+                target="_blank"
+                rel="noopener"
+                aria-label="GitHub Tour Đảo (chưa thiết lập)"
+              >
+                GitHub
+                <span class="coming-soon" aria-label="sắp có">近日</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h3 class="footer-nav-label">Pháp lý</h3>
+          <ul>
+            <li><a href="#about" class="footer-link">Điều khoản sử dụng</a></li>
+            <li><a href="#about" class="footer-link">Chính sách bảo mật</a></li>
+            <li><a href="#about" class="footer-link">Tuyên bố phạm vi</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © {year} Công ty TNHH Tour Đảo. Một số quyền được bảo lưu.
+      </p>
+      <p class="footer-disclaimer">
+        VATEngine chỉ truy xuất dữ liệu thuộc thẩm quyền của doanh nghiệp đăng nhập.
+        Không thu thập dữ liệu bên thứ ba.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--text-primary);
+    color: rgba(255,255,255,0.7);
+    padding-top: var(--sp-16);
+    padding-bottom: var(--sp-10);
+  }
+
+  /* Top */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+    margin-bottom: var(--sp-10);
+  }
+  @media (min-width: 700px) {
+    .footer-top { grid-template-columns: 240px 1fr; }
+  }
+
+  /* Brand */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: var(--fw-extrabold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .logo-vat    { color: #fff; }
+  .logo-engine { color: var(--brand-600); }
+
+  .footer-tagline {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+  .footer-company {
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-company strong {
+    color: rgba(255,255,255,0.6);
+    font-weight: var(--fw-medium);
+  }
+
+  /* Nav */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--sp-8);
+  }
+  .footer-nav-group { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .footer-nav-label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .footer-nav-group ul { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: var(--fs-sm);
+    color: rgba(255,255,255,0.6);
+    transition: color 0.15s;
+  }
+  .footer-link:hover { color: #fff; }
+  .footer-link--cta { color: var(--brand-600); }
+  .footer-link--cta:hover { color: #e8453c; }
+
+  .coming-soon {
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: var(--sp-6);
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-3);
+  }
+  .footer-copyright {
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-disclaimer {
+    font-size: var(--fs-xs);
+    color: rgba(255,255,255,0.25);
+    max-width: 400px;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .footer-disclaimer { text-align: left; }
+  }
+</style>
